@@ -49,7 +49,7 @@
 
 
 */
-class DRV8835DualMotorDriver
+class DRV8835
 {
 	/*
 		Variables correspond to the A and B channel.
@@ -69,8 +69,8 @@ class DRV8835DualMotorDriver
 
 
 	public:
-		DRV8835DualMotorDriver(int phaseA, int enableA, int phaseB, int enableB, int mode);	
-		DRV8835DualMotorDriver();	
+		DRV8835(int phaseA, int enableA, int phaseB, int enableB, int mode);	
+		DRV8835();	
 		void SetPinMode();
 
 		/*

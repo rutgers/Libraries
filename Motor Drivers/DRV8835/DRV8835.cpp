@@ -1,4 +1,4 @@
-#include "DRV8835DualMotorDriver.h"
+#include "DRV8835.h"
 
 
 
@@ -8,7 +8,7 @@
 	Motor Driver should be declared outside of the SetUp and Loop blocks.
 	MODE is set to HIGH.
 */
-DRV8835DualMotorDriver::DRV8835DualMotorDriver(int phaseA, int enableA, int phaseB, int enableB, int mode) 
+DRV8835::DRV8835(int phaseA, int enableA, int phaseB, int enableB, int mode) 
 {
 	A_PHASE = phaseA;
 	A_ENABLE = enableA;
@@ -19,7 +19,7 @@ DRV8835DualMotorDriver::DRV8835DualMotorDriver(int phaseA, int enableA, int phas
 }
 
 // This method must be done inside the SetUp block 
-void DRV8835DualMotorDriver::SetPinMode()
+void DRV8835::SetPinMode()
 {
 	pinMode(A_PHASE, OUTPUT);
   	pinMode(A_ENABLE, OUTPUT);
@@ -39,20 +39,20 @@ void DRV8835DualMotorDriver::SetPinMode()
 */
 
 
-void DRV8835DualMotorDriver::setAClockwise()
+void DRV8835::setAClockwise()
 {
 	digitalWrite(A_PHASE, LOW);
 }
-void DRV8835DualMotorDriver::setBClockwise()
+void DRV8835::setBClockwise()
 {
 	digitalWrite(B_PHASE, LOW);
 }
 
-void DRV8835DualMotorDriver::setACounterClockwise()
+void DRV8835::setACounterClockwise()
 {
 	digitalWrite(A_PHASE, HIGH);
 }
-void DRV8835DualMotorDriver::setBCounterClockwise()
+void DRV8835::setBCounterClockwise()
 {
 	digitalWrite(B_PHASE, HIGH);
 }
@@ -61,22 +61,22 @@ void DRV8835DualMotorDriver::setBCounterClockwise()
 	when re-enabled motors will run at speed set before unless 
  	changed
  */
-void DRV8835DualMotorDriver::stopA()
+void DRV8835::stopA()
 {
 	digitalWrite(A_PHASE, LOW);
 }
-void DRV8835DualMotorDriver::stopB()
+void DRV8835::stopB()
 {
 	digitalWrite(B_PHASE, LOW);
 }
 
 
-void DRV8835DualMotorDriver::setSpeedA(int Speed)
+void DRV8835::setSpeedA(int Speed)
 {
   	Speed = constrain(Speed,0,255);
 	analogWrite(A_ENABLE, Speed);
 }
-void DRV8835DualMotorDriver::setSpeedB(int Speed)
+void DRV8835::setSpeedB(int Speed)
 {
   	Speed = constrain(Speed,0,255);
 	analogWrite(B_ENABLE, Speed);
@@ -85,7 +85,7 @@ void DRV8835DualMotorDriver::setSpeedB(int Speed)
 /* 
 	Boolean argument set sets MODE to HIGH or LOW
 */
-void DRV8835DualMotorDriver::setMode(bool set)
+void DRV8835::setMode(bool set)
 {
 	if(set == true)	
 		digitalWrite(MODE, HIGH);
@@ -95,7 +95,7 @@ void DRV8835DualMotorDriver::setMode(bool set)
 }
 
 // Default Constructor
-DRV8835DualMotorDriver::DRV8835DualMotorDriver()
+DRV8835::DRV8835()
 {
 	
 }
@@ -108,36 +108,36 @@ DRV8835DualMotorDriver::DRV8835DualMotorDriver()
 */
 
 // Sets speed of both motors to the same speed
-void DRV8835DualMotorDriver::setSpeedBoth(int Speed)
+void DRV8835::setSpeedBoth(int Speed)
 {
 	setSpeedB(Speed);
 	setSpeedA(Speed);
 }
 
-void DRV8835DualMotorDriver::setForwards()
+void DRV8835::setForwards()
 {
 	setAClockwise();
 	setBCounterClockwise();
 }
 
-void DRV8835DualMotorDriver::setBackwards()
+void DRV8835::setBackwards()
 {
 	setACounterClockwise();
 	setBClockwise();
 }
 
-void DRV8835DualMotorDriver::setRotateRight()
+void DRV8835::setRotateRight()
 {
 	setACounterClockwise();
 	setBCounterClockwise();
 }
 
-void DRV8835DualMotorDriver::setRotateLeft()
+void DRV8835::setRotateLeft()
 {
 	setAClockwise();
 	setBClockwise();
 }
-void DRV8835DualMotorDriver::stopBoth()
+void DRV8835::stopBoth()
 {
 	stopB();
 	stopA();

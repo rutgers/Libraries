@@ -33,4 +33,4 @@ This pin gives access to the motor power supply after the reverse-voltage protec
 It can be used to supply reverse-protected power to other components in the system. It is generally intended as an output, 
 but it can also be used to supply board power (such as in cases where the motor supply voltage is too low for the reverse-protection circuit).
 
-* Written by Kevin Quizhpi on August 2, 2017 *
+*Written by Kevin Quizhpi on August 2, 2017*

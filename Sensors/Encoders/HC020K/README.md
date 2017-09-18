@@ -13,7 +13,7 @@ Initialize the encoder on whichever pin you plan to use it with.
 Also, wrap the countTicks() function and pass it to the encoder in init.
 Finally, since the encoder doesn't know which direction it's going in, you need to use setDirection()
 
-'''c
+```c
 #include <HC020K.h>
 
 HC020K enc(2);
@@ -30,6 +30,6 @@ void setup() {
 void loop() {
 	enc.getTicks();
 }
-'''
+```
 
 *Written by Rupesh Chinta - September 17th*

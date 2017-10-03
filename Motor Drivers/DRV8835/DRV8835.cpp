@@ -2,14 +2,29 @@
 
 // Note: This class currently only supports Phase/Enable mode
 
-DRV8835::DRV8835(int phase1, int enable1, int phase2, int enable2, int modePin) {
+DRV8835::DRV8835(int phase1, int enable1, int phase2, int enable2, int mode) {
 	phase = new int[NUM_MOTORS];
 	phase[0] = phase1;
 	phase[1] = phase2;
 	enable = new int[NUM_MOTORS];
 	enable[0] = enable1;
 	enable[1] = enable2;
-	mode = modePin;
+	modePin = mode;
+	modeState = true;
+	inverted = new bool[NUM_MOTORS];
+	inverted[0] = false;
+	inverted[1] = false;
+}
+
+DRV8835::DRV8835(int phase1, int enable1, int phase2, int enable2, bool mode) {
+	phase = new int[NUM_MOTORS];
+	phase[0] = phase1;
+	phase[1] = phase2;
+	enable = new int[NUM_MOTORS];
+	enable[0] = enable1;
+	enable[1] = enable2;
+	modeState = mode;
+	modePin = -1;
 	inverted = new bool[NUM_MOTORS];
 	inverted[0] = false;
 	inverted[1] = false;
@@ -20,8 +35,10 @@ void DRV8835::init() {
 		pinMode(phase[i], OUTPUT);
 		pinMode(enable[i], OUTPUT);
 	}
-  	pinMode(mode, OUTPUT);
-  	digitalWrite(mode, HIGH);
+	if (modePin >= 0) {
+		pinMode(modePin, OUTPUT);
+		digitalWrite(modePin, modeState);
+	}
 }
 
 void DRV8835::setSpeed(int motor, int speed) {
@@ -37,4 +54,5 @@ void DRV8835::setInverted(int motor, bool invert) {
 
 /**	
  *	08/24/17 - Rupesh Chinta: Created Library
+ *  10/03/17 - Rupesh Chinta: Added constructor for no mode pin
  */

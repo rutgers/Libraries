@@ -19,10 +19,13 @@ class DRV8835 {
 		// Arrays to store the pins of the motor, and its inverted state
 		int *phase, *enable;
 		bool *inverted;
-		int mode;
+		// This keeps track of what mode the controller is in
+		bool modeState;
+		int modePin;
 
 	public:
-		DRV8835(int phase1, int enable1, int phase2, int enable2, int modePin);
+		DRV8835(int phase1, int enable1, int phase2, int enable2, int mode);
+		DRV8835(int phase1, int enable1, int phase2, int enable2, bool mode);
 		// Sets up pins as output pins, call this in setup
 		void init();
 		// Given a motor number, sets the speed to that motor.
@@ -36,4 +39,5 @@ class DRV8835 {
 
 /**	
  *	08/24/17 - Rupesh Chinta: Created Library
+ *  10/03/17 - Rupesh Chinta: Added constructor for no mode pin
  */

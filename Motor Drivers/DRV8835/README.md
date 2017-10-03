@@ -2,6 +2,35 @@
 
 link: https://www.pololu.com/product/2135
 
+Usage:
+
+To use this module, there are two different constructors:
+
+```c
+#include <DRV8835.h>
+
+DRV8835 motors(8, 6, 7, 5, 4);
+DRV8835 motors(8, 6, 7, 5, true);
+```
+The first is used when you connect the mode pin into the Arduino - it needs to know which pin you connected it into.
+The second is used when you connect the mode pin directly to 5V or ground, in which case, tell the library (by using true for 5V or false for ground)
+
+In setup, you need to run init() to setup the motor pins.
+Then, you use setSpeed(motor number, motor speed) to actually move the motors. Note that speed should be a value in between -255 and 255, and if you give it a higher value, it will just clamp it.
+Finally, if you want to invert the direction a motor spins (for convenience reasons), use setInverted():
+
+```c
+void setup() {
+	motors.init();
+	motors.setInverted(1, true);
+}
+
+void loop() {
+	motors.setSpeed(0, 255);
+}
+```
+
+
 ## Motor Driver Specifications
 
 Motor Voltage: 0V to 11V
@@ -34,3 +63,4 @@ It can be used to supply reverse-protected power to other components in the syst
 but it can also be used to supply board power (such as in cases where the motor supply voltage is too low for the reverse-protection circuit).
 
 *Written by Kevin Quizhpi on August 2, 2017*
+*Updated by Rupesh Chinta on October 3, 2017 - Updated usage of library*

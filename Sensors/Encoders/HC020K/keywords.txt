@@ -1,0 +1,24 @@
+#######################################
+# Syntax Coloring Map for HC020K
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+HC020K	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+init			KEYWORD2
+countTicks		KEYWORD2
+setDirection	KEYWORD2
+getTicks		KEYWORD2
+resetTicks		KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+FORWARD		LITERAL1
+BACKWARD	LITERAL1

@@ -1,0 +1,23 @@
+#######################################
+# Syntax Coloring Map for Gyro101
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Gyro101	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+updateAngle		KEYWORD2
+convertRawAcceleration	KEYWORD2
+convertRawGyro	KEYWORD2
+getRoll		KEYWORD2
+getPitch	KEYWORD2
+getYaw	KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################

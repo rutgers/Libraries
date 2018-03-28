@@ -36,6 +36,12 @@
 			byte * sizeMap;			// array pointer for locations data in sorted by size
 			byte * locationMap;		// array pointer for data locations in history map
 			byte oldestDataPoint;	// oldest data point location in ring buffer
+			long A0;
+			long A1;
+			long A2;
+			long A3;
+			long A4;
+			long A5;
       
 	};
 

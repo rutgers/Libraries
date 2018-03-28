@@ -20,9 +20,15 @@
 
 #include "IRFilter.h"
 
-IRFilter::IRFilter(const byte size, const int seed)
+IRFilter::IRFilter(const byte size, const int seed, long a0, long a1, long a2, long a3, long a4, long a5)
 {
 
+	A0 = a0;
+	A1 = a1;
+	A2 = a2;
+	A3 = a3;
+	A4 = a4;
+	A5 = a5;
 	medFilterWin = max(size, 3);			// number of samples in sliding median filter window - usually odd #
 	medDataPointer = size >> 1;				// mid point of window
 	data = (int*) calloc (size, sizeof(int));			// array for data
@@ -109,7 +115,7 @@ int IRFilter::in(int value)
 
 
 int IRFilter::poly(int i){
-  return (int)(((((-0.0000000000416*i + 0.0000000938508)*i - 0.0000820544671)*i + 0.0350213702595)*i - 7.4822471184731)*i + 699.9053694888168);
+  return (int)(((((A5*i + A4)*i + A3)*i + A2)*i + A1)*i + A0);
 }
 
 
